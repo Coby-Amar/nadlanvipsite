@@ -6,18 +6,26 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
+import 'bootstrap/dist/css/bootstrap.rtl.min.css';
 import './index.scss'
 
-import App from './App.tsx'
-import Home from './views/home/Home.tsx';
-import About from './views/about/About.tsx';
-import Contact from './views/contact/Contact.tsx';
+import App from './App'
+import Home from '@views/Home.view';
+import About from '@views/About.view';
+import Contact from '@views/Contact.view';
+import Properties from '@views/Properties.view';
+import Property from '@views/Property.view';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [
+      {
+        index: true,
+        path: '*',
+        loader: () => redirect('/home')
+      },
       {
         index: true,
         loader: () => redirect('/home')
@@ -35,6 +43,14 @@ const router = createBrowserRouter([
         element: <Contact />,
       },
     ],
+  },
+  {
+    path: '/properties/:transactionType',
+    element: <Properties />,
+  },
+  {
+    path: '/property/:id',
+    element: <Property />,
   },
 ]);
 

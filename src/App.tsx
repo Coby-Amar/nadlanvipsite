@@ -1,4 +1,3 @@
-import './App.scss'
 import Banner from './banner/Banner'
 import Footer from './footer/Footer'
 import Main from './main/Main'

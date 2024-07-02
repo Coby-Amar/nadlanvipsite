@@ -15,12 +15,34 @@ export default function Navigation() {
                         בית
                     </NavLink>
                 </Nav.Item>
+                <Dropdown as={NavItem}>
+                    <Dropdown.Toggle as={BNavLink}>רמת החייל להשכרה</Dropdown.Toggle>
+                    <Dropdown.Menu>
+                        <Dropdown.Header>משרדים</Dropdown.Header>
+                        <Dropdown.Item>עד 50</Dropdown.Item>
+                        <Dropdown.Item>50-100</Dropdown.Item>
+                        <Dropdown.Header>קליניקות</Dropdown.Header>
+                        <Dropdown.Item>עד 50</Dropdown.Item>
+                        <Dropdown.Item>50-100</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
+                <Dropdown as={NavItem}>
+                    <Dropdown.Toggle as={BNavLink}>רמת החייל למכירה</Dropdown.Toggle>
+                    <Dropdown.Menu>
+                        <Dropdown.Header>משרדים</Dropdown.Header>
+                        <Dropdown.Item>עד 50</Dropdown.Item>
+                        <Dropdown.Item>50-100</Dropdown.Item>
+                        <Dropdown.Header>קליניקות</Dropdown.Header>
+                        <Dropdown.Item>עד 50</Dropdown.Item>
+                        <Dropdown.Item>50-100</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
                 <Nav.Item>
                     <NavLink
                         to='/about'
                         className={({ isActive }) => `nav-link${isActive ? " active" : ""}`}
                     >
-                        אודות
+                        אודותינו
                     </NavLink>
                 </Nav.Item>
                 <Nav.Item>
@@ -31,12 +53,6 @@ export default function Navigation() {
                         צור קשר
                     </NavLink>
                 </Nav.Item>
-                <Dropdown as={NavItem}>
-                    <Dropdown.Toggle as={BNavLink}>להזקאה</Dropdown.Toggle>
-                    <Dropdown.Menu>
-                        <Dropdown.Item>Hello there!</Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown>
             </Nav>
         </nav >
     )
