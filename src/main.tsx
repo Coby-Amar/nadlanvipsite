@@ -15,6 +15,7 @@ import About from '@views/About.view';
 import Contact from '@views/Contact.view';
 import Properties from '@views/Properties.view';
 import Property from '@views/Property.view';
+import { propertiesService } from '@services/properties.service';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       },
       {
         path: 'home',
+        async loader() {
+          await propertiesService.loadProperties()
+          return propertiesService.allProperties
+        },
         element: <Home />,
       },
       {

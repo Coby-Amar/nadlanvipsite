@@ -12,12 +12,31 @@ class PropertiesService {
     propertiesForSale: Property[] = []
     subPropertyTypes: string[] = []
 
-    constructor() {
-        this.__init()
-    }
+    // constructor() {
+    //     this.__init()
+    // }
 
+    async loadProperties() {
+        const result = await fetch('https://app.nadlanvip.com/api/public/properties', {
+            mode: 'cors',
+        })
+        const jsonResult:PropertyInterface[] = await result.json()
+        const subtypes: Dict = {}
+        this.allProperties = jsonResult.map(property => {
+            if (!subtypes[property.sub_type]) {
+                subtypes[property.sub_type] = true
+            }
+            return Property.fromJson({...property, id: uuid()})
+        })
+        this.subPropertyTypes = Object.keys(subtypes)
+        this.propertiesForSale = this.allProperties.filter(property => property.transaction_type.includes(TransactionType.SELL))
+        this.propertiesForRent = this.allProperties.filter(property => property.transaction_type.includes(TransactionType.RENT))
+    }
+    
     private async __init()  {
-        const result = await fetch('/public/properties')
+        const result = await fetch('https://app.nadlanvip.com/api/public/properties', {
+            mode: 'cors',
+        })
         const jsonResult:PropertyInterface[] = await result.json()
         const subtypes: Dict = {}
         this.allProperties = jsonResult.map(property => {
