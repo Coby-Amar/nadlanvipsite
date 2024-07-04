@@ -2,13 +2,14 @@ import { useState } from "react";
 import { Col, Container, Dropdown, Form, InputGroup, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 ``
-import { propertiesService } from "@services/properties.service";
 import PropertyCard from "property_card/PropertyCard";
+import { useProperties } from "hooks/useProperties.hook";
 
 export default function Properties() {
+    const { propertiesForRent, propertiesForSale, subPropertyTypes } = useProperties()
     const { transactionType } = useParams();
     const isRent = transactionType === 'rent'
-    const properties = isRent ? propertiesService.propertiesForRent : propertiesService.propertiesForSale
+    const properties = isRent ? propertiesForRent : propertiesForSale
     const [form, setForm] = useState({
         propSubType: '',
         size: {
@@ -38,7 +39,7 @@ export default function Properties() {
                                         נקה
                                     </Dropdown.Item>
                                     <Dropdown.Divider />
-                                    {propertiesService.subPropertyTypes.map(subType =>
+                                    {subPropertyTypes.map(subType =>
                                         <Dropdown.Item
                                             as="button"
                                             active={form.propSubType === subType}

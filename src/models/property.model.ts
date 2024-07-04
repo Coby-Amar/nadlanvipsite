@@ -1,9 +1,24 @@
 import { Address } from "./address.model";
 
+export class AppFile implements AppFileInterface{
+    name: string;
+    path: string;
+    type: AppFileTypes;
+    constructor(
+        name = '',
+        path = '',
+        type = AppFileTypes.JPEG,
+        ) {
+            this.name = name
+            this.path = path
+            this.type = type
+    }
+    
 
+}
 export class Property implements PropertyInterface {
     id: string;
-    files: AppFileInterface[];
+    files: AppFile[];
     transaction_type: TransactionType[];
     address: AddressInterface;
     type: PropertyType;
@@ -13,7 +28,7 @@ export class Property implements PropertyInterface {
     description: string;
     constructor(
         id = '',
-        files: AppFileInterface[] = [],
+        files: AppFile[] = [],
         transaction_type:TransactionType[] = [],
         address = new Address(),
         type = PropertyType.COMMERCIAL,
