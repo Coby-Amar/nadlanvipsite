@@ -23,7 +23,7 @@ export default function PropertyCard({ id, address, description, files, price, s
         navigate('/property/' + id)
     }, [id, navigate])
     const defaultFile = files[0]
-    const fileSrc = defaultFile ? `https://nadlanvip.com/files/property/${id}/${defaultFile.path}` : ''
+    const fileSrc = defaultFile ? `/files/property/${id}/${defaultFile.path}` : ''
     return (
         <Container onClick={hadleClick}>
             <Row>
