@@ -1,34 +1,30 @@
+import { TransactionType } from '@models/enums.model'
 import { Property } from '@models/property.model'
-
-enum TransactionType {
-	BUY = "Buy",
-	SELL = "Sell",
-	RENT = "Rent",
-}
 
 class PropertiesService {
     allProperties: Property[] = []
+    subPropertyTypesForRent: string[] = []
+    subPropertyTypesForSale: string[] = []
     propertiesForRent: Property[] = []
     propertiesForSale: Property[] = []
-    subPropertyTypes: string[] = []
     
-    constructor() {
-        this.loadProperties()
+    async fetchProperties(): Promise<Property[]> {
+        const result = await fetch('https://nadlanvip.com/api/public/properties',{mode: 'cors'})
+        const jsonResult:PropertyInterface[] = await result.json()
+        return jsonResult.map(Property.fromJson)
     }
 
+
     async loadProperties() {
-        const result = await fetch('api/public/properties')
+        const result = await fetch('https://nadlanvip.com/api/public/properties',{mode: 'cors'})
         const jsonResult:PropertyInterface[] = await result.json()
-        const subtypes: Dict = {}
-        this.allProperties = jsonResult.map(property => {
-            if (!subtypes[property.sub_type]) { 
-                subtypes[property.sub_type] = true
-            }
-            return Property.fromJson(property)
-        })
-        this.subPropertyTypes = Object.keys(subtypes)
-        this.propertiesForSale = this.allProperties.filter(property => property.transaction_type.includes(TransactionType.SELL))
-        this.propertiesForRent = this.allProperties.filter(property => property.transaction_type.includes(TransactionType.RENT))
+        this.allProperties = jsonResult.map(Property.fromJson)
+        this.propertiesForRent = propertiesService.allProperties.filter(property => property.transaction_type.includes(TransactionType.SELL))
+        this.propertiesForSale = propertiesService.allProperties.filter(property => property.transaction_type.includes(TransactionType.RENT))
+        this.subPropertyTypesForRent = this.propertiesForRent.flatMap(property => property.sub_type)
+        this.subPropertyTypesForRent = [...new Set(this.subPropertyTypesForRent)]
+        this.subPropertyTypesForSale = this.propertiesForSale.flatMap(property => property.sub_type)
+        this.subPropertyTypesForSale = [...new Set(this.subPropertyTypesForSale)]
     }
 }
 

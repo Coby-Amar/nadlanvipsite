@@ -17,22 +17,22 @@ export class AppFile implements AppFileInterface{
 
 }
 export class Property implements PropertyInterface {
-    id: string;
-    files: AppFile[];
-    transaction_type: TransactionType[];
-    address: AddressInterface;
-    type: PropertyType;
-    sub_type: string;
-    size: number;
-    price: number;
-    description: string;
+    id: string
+    files: AppFile[]
+    transaction_type: TransactionType[]
+    address: AddressInterface
+    type: PropertyType
+    sub_type: string[]
+    size: number
+    price: number
+    description: string
     constructor(
         id = '',
         files: AppFile[] = [],
         transaction_type:TransactionType[] = [],
         address = new Address(),
         type = PropertyType.COMMERCIAL,
-        sub_type = '',
+        sub_type: string[] = [],
         size = 0,
         price = 0,
         description = '',

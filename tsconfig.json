@@ -38,6 +38,18 @@
       "@assets/*": [
         "./assets/*"
       ],
+      "@hooks": [
+        "./hooks/index.hook.ts"
+      ],
+      "@hooks/*": [
+        "./hooks/*"
+      ],
+      "@components": [
+        "./components/index.components.ts"
+      ],
+      "@components/*": [
+        "./components/*"
+      ],
     }
   },
   "include": [

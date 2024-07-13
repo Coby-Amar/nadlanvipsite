@@ -43,15 +43,15 @@ const router = createBrowserRouter([
         path: 'contact',
         element: <Contact />,
       },
+      {
+        path: '/properties/:transactionType',
+        element: <Properties />,
+      },
+      {
+        path: '/property/:id',
+        element: <Property />,
+      },
     ],
-  },
-  {
-    path: '/properties/:transactionType',
-    element: <Properties />,
-  },
-  {
-    path: '/property/:id',
-    element: <Property />,
   },
 ]);
 

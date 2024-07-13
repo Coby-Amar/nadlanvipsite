@@ -1,0 +1,13 @@
+header.banner {
+    height: 30vh;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .bannerLogo {
+        position: absolute;
+        left: 5vw;
+        top: 12vh;
+
+    }
+}

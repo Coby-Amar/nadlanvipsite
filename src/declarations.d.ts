@@ -40,7 +40,7 @@ declare interface PropertyInterface {
 	transaction_type: TransactionType[]
 	address: AddressInterface
 	type: PropertyType
-	sub_type: string
+	sub_type: string[]
 	size: number
 	price: number
 	description: string

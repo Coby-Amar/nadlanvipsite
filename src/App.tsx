@@ -1,9 +1,10 @@
-import Banner from './banner/Banner'
-import Footer from './footer/Footer'
+import { propertiesService } from '@services/properties.service'
 import Main from './main/Main'
-import Navigation from './navigation/Navigation'
+
+import { Banner, Footer, Navigation } from '@components'
 
 function App() {
+  propertiesService.loadProperties()
   return (
     <>
       <Navigation />

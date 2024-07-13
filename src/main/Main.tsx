@@ -3,7 +3,7 @@ import './Main.scss'
 
 export default function Main() {
     return (
-        <main>
+        <main className='p-4'>
             <Outlet />
         </main>
     )

@@ -1,1 +1,17 @@
-// Import all of Bootstrap's CSS
+.primary-bg {
+    background-color: #DCBD14;
+    color: black;
+    border: 1px solid #DCBD14;
+
+    &:hover {
+        color: black;
+        background-color: #DCBD14;
+        border: 1px solid #DCBD14;
+    }
+
+    &:first-child:active {
+        color: black;
+        background-color: #DCBD14;
+        border: 1px solid #DCBD14;
+    }
+}
