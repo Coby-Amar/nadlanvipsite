@@ -14,7 +14,7 @@ export default function Property() {
                 {property?.files.map(({ name = '', path = '' }) =>
                     <Carousel.Item>
                         <Image
-                            src={`https://nadlanvip.com/files/property/${property.id}/${path}`}
+                            src={`/files/property/${property.id}/${path}`}
                             alt={name}
                         />
                     </Carousel.Item>
