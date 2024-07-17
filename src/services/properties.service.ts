@@ -10,7 +10,7 @@ class PropertiesService {
     subPropertyTypesForSale:string[] = []
     
     async loadProperties(): Promise<void> {
-        const result = await fetch('/public/properties')
+        const result = await fetch('/api/public/properties')
         const jsonResult:PropertyInterface[] = await result.json()
         const properties = jsonResult.map(Property.fromJson)
         const propertiesForRent = properties.filter(property => property.transaction_types.includes(TransactionType.RENT))
