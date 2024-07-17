@@ -43,6 +43,7 @@ declare interface PropertyInterface {
 	sub_types: string[]
 	size: number
 	price: number
+	price_per_size: number
 	floor: number
 	number_of_floors: number
 	description: string

@@ -31,12 +31,12 @@ export default function SearchBar() {
     return (
         <Container fluid className='my-4 py-4 primary-bg rounded'>
             <Row className='justify-content-center column-gap-3 row-gap-3'>
-                <Col md='auto' className='bg-body rounded p-3'>
+                <Col md='3' className='bg-body rounded p-3'>
                     <Form.Group>
                         <Form.Label>סוג נכס</Form.Label>
                         <Dropdown>
-                            <Dropdown.Toggle variant='light'>{propertySubType ?? 'בחר סוג נכס'}</Dropdown.Toggle>
-                            <Dropdown.Menu>
+                            <Dropdown.Toggle className='w-100' variant='light'>{propertySubType ?? 'בחר סוג נכס'}</Dropdown.Toggle>
+                            <Dropdown.Menu className='w-100'>
                                 <Dropdown.Item
                                     as="button"
                                     onClick={() => { searchParams.delete(SEARCH_FIELDS.PROPERTY_SUB_TYPE), setSearchParams(searchParams) }}
@@ -63,7 +63,7 @@ export default function SearchBar() {
                         </Dropdown >
                     </Form.Group>
                 </Col>
-                <Col md='auto' className='bg-body rounded p-3'>
+                <Col md='3' className='bg-body rounded p-3'>
                     <Form.Group>
                         <Form.Label>גודל דירה במט"ר</Form.Label>
                         <InputGroup>
@@ -80,7 +80,7 @@ export default function SearchBar() {
                         </InputGroup>
                     </Form.Group>
                 </Col>
-                <Col md='auto' className='bg-body rounded p-3'>
+                <Col md='3' className='bg-body rounded p-3'>
                     <Form.Group>
                         <Form.Label>מחיר</Form.Label>
                         <InputGroup>

@@ -27,7 +27,7 @@ const sizes = [
     },
     {
         min: 500,
-        text: 'מ- 500'
+        text: 'מעל- 500'
     },
 ]
 
@@ -79,7 +79,7 @@ export default function Navigation() {
                                     {sizes.map(({ min, max, text }) =>
                                         <>
                                             <NavDropdown.Item
-                                                onClick={() => navigate(`/properties/rent?${max ? 'max_size=' + max : ''}${min ? '&min_size=' + min : ''}&property_sub_type=${val}`)}
+                                                onClick={() => navigate(`/properties/sale?${max ? 'max_size=' + max : ''}${min ? '&min_size=' + min : ''}&property_sub_type=${val}`)}
                                             >
                                                 {text} מ”ר
                                             </NavDropdown.Item>

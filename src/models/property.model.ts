@@ -26,6 +26,7 @@ export class Property implements PropertyInterface {
     sub_types: string[]
     size: number
     price: number
+    price_per_size: number
 	floor: number
 	number_of_floors: number
     description: string
@@ -38,6 +39,7 @@ export class Property implements PropertyInterface {
         sub_type: string[] = [],
         size = 0,
         price = 0,
+        price_per_size = 0,
         description = '',
         floor = 0,
         number_of_floors = 0,
@@ -50,6 +52,7 @@ export class Property implements PropertyInterface {
         this.sub_types = sub_type
         this.size = size
         this.price = price
+        this.price_per_size = price_per_size
         this.description = description
         this.floor = floor
         this.number_of_floors = number_of_floors
@@ -64,6 +67,7 @@ export class Property implements PropertyInterface {
             property.sub_types,
             property.size,
             property.price,
+            property.price_per_size,
             property.description,
             property.floor,
             property.number_of_floors,

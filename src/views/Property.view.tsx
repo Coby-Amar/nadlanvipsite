@@ -25,6 +25,7 @@ export default function Property() {
         floor,
         number_of_floors,
         sub_types,
+        price_per_size,
     } = property ?? new PropertyModel()
     return (
         <>
@@ -53,13 +54,10 @@ export default function Property() {
                     <Col>
                         <Container>
                             <dl>
-                                <dt className="fw-bold">
-                                    פרטים
-                                </dt>
                                 <dd className="fw-semibold">{address.street}</dd>
                                 <dd>{sub_types.join()} {address.city}</dd>
                                 <dd>{size} מט"ר</dd>
-                                <dd>{price} ש"ח לפי מט"ר</dd>
+                                <dd>{price} ש"ח לפי מט"ר {price_per_size}</dd>
                                 {(number_of_floors ?? false) && (floor ?? false) ? <dd>{number_of_floors}/{floor} קומה</dd> : null}
                             </dl>
                             <p>{description}</p>
