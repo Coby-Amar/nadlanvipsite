@@ -13,8 +13,6 @@ export default function Banner() {
                 roundedCircle
                 className='bannerLogo'
                 src={bannerLogo}
-                height='150px'
-                width='150px'
             />
         </header>
     )

@@ -15,6 +15,9 @@ import About from '@views/About.view';
 import Contact from '@views/Contact.view';
 import Properties from '@views/Properties.view';
 import Property from '@views/Property.view';
+import { propertiesService } from '@services/properties.service';
+
+propertiesService.loadProperties()
 
 
 const router = createBrowserRouter([

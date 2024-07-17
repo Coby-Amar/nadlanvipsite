@@ -56,7 +56,7 @@ export function useSearchForm(){
                 }
             })
         },
-        searchFilterProperties({ sub_type, price, size }: PropertyInterface) {
+        searchFilterProperties({ sub_types: sub_type, price, size }: PropertyInterface) {
             const formPrice = form.price
             const subType = form.propSubType
             if (subType.length > 0 && sub_type.includes(subType)) {

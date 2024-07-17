@@ -37,11 +37,13 @@ declare interface AppFileInterface {
 declare interface PropertyInterface {
 	id: string
 	files: AppFileInterface[]
-	transaction_type: TransactionType[]
+	transaction_types: TransactionType[]
 	address: AddressInterface
 	type: PropertyType
-	sub_type: string[]
+	sub_types: string[]
 	size: number
 	price: number
+	floor: number
+	number_of_floors: number
 	description: string
 }

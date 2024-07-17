@@ -3,17 +3,17 @@ import { Button, Col, Container, Row } from 'react-bootstrap'
 
 import { TransactionType } from '@models/enums.model'
 import { PropertyCard } from '@components'
-import { propertiesService } from '@services/properties.service'
-import { RAMAT_HAHAYAL } from '@utils/consts.utils'
+import { FOR_RENT, FOR_SALE, RAMAT_HAHAYAL } from '@utils/consts.utils'
+import { useProperties } from '@hooks'
 
 export default function Home() {
-    const { propertiesForRent, propertiesForSale } = propertiesService
+    const { propertiesForRent, propertiesForSale } = useProperties()
     const filteredPropertiesForRent = propertiesForRent.slice(0, 4)
     const filteredPropertiesForSale = propertiesForSale.slice(0, 4)
     return (
         <>
-            <HomeProperties title={`משרדים להשכרה ב${RAMAT_HAHAYAL}`} properties={filteredPropertiesForRent} type={TransactionType.RENT} />
-            <HomeProperties title={`משרדים למכירה ב${RAMAT_HAHAYAL}`} properties={filteredPropertiesForSale} type={TransactionType.SELL} />
+            <HomeProperties title={`${RAMAT_HAHAYAL} ${FOR_RENT}`} properties={filteredPropertiesForRent} type={TransactionType.RENT} />
+            <HomeProperties title={`${RAMAT_HAHAYAL} ${FOR_SALE}`} properties={filteredPropertiesForSale} type={TransactionType.SELL} />
         </>
     )
 }
