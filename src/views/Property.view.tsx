@@ -36,7 +36,7 @@ export default function Property() {
                     <Carousel.Item key={path} >
                         <Image
                             className="mh-img object-fit-contain"
-                            src={`${import.meta.env.VITE_IMAGE_URL}/files/property/${id}/${path}`}
+                            src={`${import.meta.env.VITE_BASE_URL}/files/property/${id}/${path}`}
                             alt={name}
                         />
                     </Carousel.Item>
