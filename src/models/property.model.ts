@@ -62,7 +62,7 @@ export class Property implements PropertyInterface {
             property.id,
             property.files,
             property.transaction_types,
-            property.address,
+            Address.fromJson(property.address),
             property.type,
             property.sub_types,
             property.size,

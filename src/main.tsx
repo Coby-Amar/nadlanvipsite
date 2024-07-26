@@ -27,11 +27,10 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        path: '*',
         loader: () => redirect('/home')
       },
       {
-        index: true,
+        path: '*',
         loader: () => redirect('/home')
       },
       {
@@ -40,19 +39,19 @@ const router = createBrowserRouter([
       },
       {
         path: 'about',
-        element: <About />,
+        Component: About,
       },
       {
         path: 'contact',
-        element: <Contact />,
+        Component: Contact,
       },
       {
         path: '/properties/:transactionType',
-        element: <Properties />,
+        Component: Properties,
       },
       {
         path: '/property/:id',
-        element: <Property />,
+        Component: Property,
       },
     ],
   },

@@ -10,9 +10,10 @@ class PropertiesService {
     subPropertyTypesForSale:string[] = []
     
     async loadProperties(): Promise<void> {
-        const result = await fetch('/api/public/properties')
-        const jsonResult:PropertyInterface[] = await result.json()
-        const properties = jsonResult.map(Property.fromJson)
+        const result = await fetch(`${import.meta.env.VITE_IMAGE_URL}/api/public/properties`, {mode: import.meta.env.VITE_CORS})
+        const jsonResult:string[] = await result.json()
+        
+        const properties = jsonResult.map(propString => Property.fromJson(JSON.parse(atob(propString))))
         const propertiesForRent = properties.filter(property => property.transaction_types.includes(TransactionType.RENT))
         const propertiesForSale = properties.filter(property => property.transaction_types.includes(TransactionType.SELL))
         this.allProperties = properties

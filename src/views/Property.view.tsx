@@ -1,22 +1,23 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Carousel, Col, Container, Image, Row } from "react-bootstrap";
+import { APIProvider, useMapsLibrary } from "@vis.gl/react-google-maps";
 
-import failedToLoadImageAlt from '@assets/failedToLoadImageAlt.png'
+// import failedToLoadImageAlt from '@assets/failedToLoadImageAlt.png'
 import { useProperties } from "@hooks";
-import { Property as PropertyModel } from "@models/property.model";
 
 export default function Property() {
     const { allProperties } = useProperties()
     const { id } = useParams();
-    const navigate = useNavigate();
-    const property = allProperties.find(property => property.id === id)
-    const [files, setFiles] = useState(property?.files.map(file => ({ ...file, showSvg: true })) ?? [])
+    const [property, setProperty] = useState(allProperties.find(property => property.id === id))
     useEffect(() => {
         if (!property) {
-            navigate('/home')
+            setProperty(allProperties.find(property => property.id === id))
         }
-    }, [navigate, property])
+    }, [allProperties, id, property])
+    if (!property) {
+        return <></>
+    }
     const {
         address,
         price,
@@ -26,24 +27,17 @@ export default function Property() {
         number_of_floors,
         sub_types,
         price_per_size,
-    } = property ?? new PropertyModel()
+        files,
+    } = property
     return (
         <>
             <Carousel data-bs-theme="dark">
-                {files.map(({ name = '', path = '', showSvg }, index) =>
-                    <Carousel.Item >
-                        {showSvg && <Image
-                            className="mh-img object-fit-contain"
-                            src={failedToLoadImageAlt}
-                        />}
+                {files.map(({ name = '', path = '' }) =>
+                    <Carousel.Item key={path} >
                         <Image
                             className="mh-img object-fit-contain"
-                            src={`https://nadlanvip.com/files/property/${id}/${path}`}
+                            src={`${import.meta.env.VITE_IMAGE_URL}/files/property/${id}/${path}`}
                             alt={name}
-                            onLoad={() => {
-                                files[index].showSvg = false
-                                setFiles([...files])
-                            }}
                         />
                     </Carousel.Item>
                 )
@@ -65,9 +59,55 @@ export default function Property() {
                         </Container>
                     </Col>
                     <Col>
+                        <APIProvider apiKey={import.meta.env.VITE_GME_AK}>
+                            <GoogleMap address={address} />
+                        </APIProvider>
                     </Col>
                 </Row>
-            </Container>
+            </Container >
         </>
     )
+}
+
+function GoogleMap({ address: { lat, lng } }: { address: AddressInterface }) {
+    const mapsLibrary = useMapsLibrary('maps');
+    useEffect(() => {
+        if (!mapsLibrary) return
+        console.log('map')
+        const map = new google.maps.Map(
+            document.getElementById("property_map") as HTMLElement,
+            {
+                zoom: 18,
+                center: {
+                    lat,
+                    lng
+                },
+                disableDefaultUI: true,
+                gestureHandling: 'none',
+                clickableIcons: false,
+            }
+        );
+        new mapsLibrary.Circle({
+            strokeColor: "#FF0000",
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: "#FF0000",
+            fillOpacity: 0.35,
+            center: {
+                lat,
+                lng
+            },
+            radius: 70,
+            map,
+            clickable: false
+        })
+    }, [lat, lng, mapsLibrary])
+
+    return (
+        <div
+            id="property_map"
+            style={{ width: '50vw', height: '50vh' }}
+        />
+    )
+
 }

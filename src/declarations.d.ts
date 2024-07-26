@@ -8,11 +8,15 @@ declare enum PropertyType {
 }
 
 declare interface AddressInterface {
+	street_number: int
 	street: string
-	neighborhood: string | null
+	neighborhood: string
 	city: string
 	state: string
-	zip_code: number | null
+	zip_code: number
+	lat: number
+	lng: number
+	get toDisplay()
 }
 
 declare enum AppFileTypes {

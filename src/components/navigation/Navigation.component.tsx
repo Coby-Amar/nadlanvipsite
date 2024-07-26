@@ -54,14 +54,14 @@ export default function Navigation() {
                                 </Accordion.Header>
                                 <Accordion.Body>
                                     {sizes.map(({ min, max, text }) =>
-                                        <>
+                                        <div key={text}>
                                             <NavDropdown.Item
                                                 onClick={() => navigate(`/properties/rent?${max ? 'max_size=' + max : ''}${min ? '&min_size=' + min : ''}&property_sub_type=${val}`)}
                                             >
                                                 {text} מ”ר
                                             </NavDropdown.Item>
                                             <NavDropdown.Divider />
-                                        </>
+                                        </div>
                                     )}
                                 </Accordion.Body>
                             </Accordion.Item>
@@ -77,14 +77,14 @@ export default function Navigation() {
                                 </Accordion.Header>
                                 <Accordion.Body>
                                     {sizes.map(({ min, max, text }) =>
-                                        <>
+                                        <div key={text}>
                                             <NavDropdown.Item
                                                 onClick={() => navigate(`/properties/sale?${max ? 'max_size=' + max : ''}${min ? '&min_size=' + min : ''}&property_sub_type=${val}`)}
                                             >
                                                 {text} מ”ר
                                             </NavDropdown.Item>
                                             <NavDropdown.Divider />
-                                        </>
+                                        </div>
                                     )}
                                 </Accordion.Body>
                             </Accordion.Item>
