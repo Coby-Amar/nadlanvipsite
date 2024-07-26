@@ -10,7 +10,7 @@ class PropertiesService {
     subPropertyTypesForSale:string[] = []
     
     async loadProperties(): Promise<void> {
-        const result = await fetch(`${import.meta.env.VITE_IMAGE_URL}/api/public/properties`, {mode: import.meta.env.VITE_CORS})
+        const result = await fetch(`${import.meta.env.VITE_BASE_URL}/api/public/properties`, {mode: import.meta.env.VITE_CORS})
         const jsonResult:string[] = await result.json()
         
         const properties = jsonResult.map(propString => Property.fromJson(JSON.parse(atob(propString))))

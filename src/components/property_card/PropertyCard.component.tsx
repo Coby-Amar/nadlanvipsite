@@ -23,7 +23,7 @@ export default function PropertyCard({ id, address, description, files, price, s
         navigate('/property/' + id)
     }, [id, navigate])
     const defaultFile = files[0]
-    const fileSrc = defaultFile ? `${import.meta.env.VITE_IMAGE_URL}/files/property/${id}/${defaultFile.path}` : ''
+    const fileSrc = defaultFile ? `${import.meta.env.VITE_BASE_URL}/files/property/${id}/${defaultFile.path}` : ''
     return (
         <Card onClick={hadleClick} className='hover-shadow'>
             {showSvg && <Card.Img
