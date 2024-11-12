@@ -43,22 +43,23 @@ export default function Property() {
                 )
                 }
             </Carousel>
-            <Container>
+            <Container className="propertyDetails">
                 <Row>
                     <Col>
                         <Container>
                             <dl>
-                                <dd className="fw-semibold">{address.street}</dd>
+                                <dd className="fw-semibold pstreet fs-3">{address.street}</dd>
                                 <dd>{sub_types.join()} {address.city}</dd>
-                                <dd>{size} מט"ר</dd>
-                                <dd>{price} ש"ח לפי מט"ר {price_per_size}</dd>
+                                <dd>{size} מ"ר</dd>
+                                <dd>{price} <span className="pps">(ש"ח לפי מ"ר {price_per_size})</span></dd>
                                 {(number_of_floors ?? false) && (floor ?? false) ? <dd>{number_of_floors}/{floor} קומה</dd> : null}
                             </dl>
+                            <hr></hr>
                             <p>{description}</p>
 
                         </Container>
                     </Col>
-                    <Col>
+                    <Col md={5}>
                         <APIProvider apiKey={import.meta.env.VITE_GME_AK}>
                             <GoogleMap address={address} />
                         </APIProvider>
@@ -89,10 +90,10 @@ function GoogleMap({ address: { lat, lng } }: { address: AddressInterface }) {
         );
         new mapsLibrary.Circle({
             strokeColor: "#FF0000",
-            strokeOpacity: 0.8,
+            strokeOpacity: 0.5,
             strokeWeight: 2,
             fillColor: "#FF0000",
-            fillOpacity: 0.35,
+            fillOpacity: 0.10,
             center: {
                 lat,
                 lng
@@ -106,7 +107,7 @@ function GoogleMap({ address: { lat, lng } }: { address: AddressInterface }) {
     return (
         <div
             id="property_map"
-            style={{ width: '50vw', height: '50vh' }}
+            style={{ height: '50vh' }}
         />
     )
 

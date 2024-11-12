@@ -1,3 +1,21 @@
 main {
     min-height: 52vh;
 }
+main .about {
+    text-align: center;
+}
+main .about section {
+    width: 80%;
+}
+main .propertyDetails {
+margin-top: 5%;
+}
+main .propertyDetails .pps{
+    font-size: smaller;
+}
+main .propertyDetails hr{
+    opacity: 1;
+}
+.contact-iframe{
+    text-align: center;
+}

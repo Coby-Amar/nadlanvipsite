@@ -35,79 +35,82 @@ export default function Navigation() {
     const { subPropertyTypesForRent, subPropertyTypesForSale } = useProperties()
     const navigate = useNavigate()
     return (
-        <Navbar sticky='top' className="primary-bg">
-            <Nav variant="underline" className="primary-bg">
-                <Nav.Item>
-                    <NavLink
-                        to='/home'
-                        className={({ isActive }) => `nav-link${isActive ? " active" : ""}`}
-                    >
-                        בית
-                    </NavLink>
-                </Nav.Item>
-                <NavDropdown title={`${RAMAT_HAHAYAL} ${FOR_RENT}`}>
-                    <Accordion>
-                        {subPropertyTypesForRent.map((val, index) =>
-                            <Accordion.Item eventKey={'' + index} key={val + index} className='border-0'>
-                                <Accordion.Header>
-                                    <NavDropdown.Header className='text-dark fs-5'>{val}</NavDropdown.Header>
-                                </Accordion.Header>
-                                <Accordion.Body>
-                                    {sizes.map(({ min, max, text }) =>
-                                        <div key={text}>
-                                            <NavDropdown.Item
-                                                onClick={() => navigate(`/properties/rent?${max ? 'max_size=' + max : ''}${min ? '&min_size=' + min : ''}&property_sub_type=${val}`)}
-                                            >
-                                                {text} מ”ר
-                                            </NavDropdown.Item>
-                                            <NavDropdown.Divider />
-                                        </div>
-                                    )}
-                                </Accordion.Body>
-                            </Accordion.Item>
-                        )}
-                    </Accordion>
-                </NavDropdown>
-                <NavDropdown title={`${RAMAT_HAHAYAL} ${FOR_SALE}`}>
-                    <Accordion>
-                        {subPropertyTypesForSale.map((val, index) =>
-                            <Accordion.Item eventKey={'' + index} key={val + index} className='border-0'>
-                                <Accordion.Header>
-                                    <NavDropdown.Header className='text-dark fs-5'>{val}</NavDropdown.Header>
-                                </Accordion.Header>
-                                <Accordion.Body>
-                                    {sizes.map(({ min, max, text }) =>
-                                        <div key={text}>
-                                            <NavDropdown.Item
-                                                onClick={() => navigate(`/properties/sale?${max ? 'max_size=' + max : ''}${min ? '&min_size=' + min : ''}&property_sub_type=${val}`)}
-                                            >
-                                                {text} מ”ר
-                                            </NavDropdown.Item>
-                                            <NavDropdown.Divider />
-                                        </div>
-                                    )}
-                                </Accordion.Body>
-                            </Accordion.Item>
-                        )}
-                    </Accordion>
-                </NavDropdown>
-                <Nav.Item>
-                    <NavLink
-                        to='/about'
-                        className={({ isActive }) => `nav-link${isActive ? " active" : ""}`}
-                    >
-                        אודותינו
-                    </NavLink>
-                </Nav.Item>
-                <Nav.Item>
-                    <NavLink
-                        to='/contact'
-                        className={({ isActive }) => `nav-link${isActive ? " active" : ""}`}
-                    >
-                        צור קשר
-                    </NavLink>
-                </Nav.Item>
-            </Nav>
+        <Navbar expand="lg" sticky='top' className="primary-bg">
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse>
+                <Nav variant="underline" className="primary-bg">
+                    <Nav.Item>
+                        <NavLink
+                            to='/home'
+                            className={({ isActive }) => `nav-link${isActive ? " active" : ""}`}
+                        >
+                            בית
+                        </NavLink>
+                    </Nav.Item>
+                    <NavDropdown title={`${RAMAT_HAHAYAL} ${FOR_RENT}`}>
+                        <Accordion>
+                            {subPropertyTypesForRent.map((val, index) =>
+                                <Accordion.Item eventKey={'' + index} key={val + index} className='border-0'>
+                                    <Accordion.Header>
+                                        <NavDropdown.Header className='text-dark fs-6'>{val}</NavDropdown.Header>
+                                    </Accordion.Header>
+                                    <Accordion.Body>
+                                        {sizes.map(({ min, max, text }) =>
+                                            <div key={text}>
+                                                <NavDropdown.Item
+                                                    onClick={() => navigate(`/properties/rent?${max ? 'max_size=' + max : ''}${min ? '&min_size=' + min : ''}&property_sub_type=${val}`)}
+                                                >
+                                                    {text} מ”ר
+                                                </NavDropdown.Item>
+                                                <NavDropdown.Divider />
+                                            </div>
+                                        )}
+                                    </Accordion.Body>
+                                </Accordion.Item>
+                            )}
+                        </Accordion>
+                    </NavDropdown>
+                    <NavDropdown title={`${RAMAT_HAHAYAL} ${FOR_SALE}`}>
+                        <Accordion>
+                            {subPropertyTypesForSale.map((val, index) =>
+                                <Accordion.Item eventKey={'' + index} key={val + index} className='border-0'>
+                                    <Accordion.Header>
+                                        <NavDropdown.Header className='text-dark fs-6'>{val}</NavDropdown.Header>
+                                    </Accordion.Header>
+                                    <Accordion.Body>
+                                        {sizes.map(({ min, max, text }) =>
+                                            <div key={text}>
+                                                <NavDropdown.Item
+                                                    onClick={() => navigate(`/properties/sale?${max ? 'max_size=' + max : ''}${min ? '&min_size=' + min : ''}&property_sub_type=${val}`)}
+                                                >
+                                                    {text} מ”ר
+                                                </NavDropdown.Item>
+                                                <NavDropdown.Divider />
+                                            </div>
+                                        )}
+                                    </Accordion.Body>
+                                </Accordion.Item>
+                            )}
+                        </Accordion>
+                    </NavDropdown>
+                    <Nav.Item>
+                        <NavLink
+                            to='/about'
+                            className={({ isActive }) => `nav-link${isActive ? " active" : ""}`}
+                        >
+                            אודותינו
+                        </NavLink>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <NavLink
+                            to='/contact'
+                            className={({ isActive }) => `nav-link${isActive ? " active" : ""}`}
+                        >
+                            צור קשר
+                        </NavLink>
+                    </Nav.Item>
+                </Nav>
+            </Navbar.Collapse>
         </Navbar >
     )
 }
