@@ -31,7 +31,7 @@ export default function Property() {
     } = property
     return (
         <>
-            <Carousel data-bs-theme="dark">
+            <Carousel data-bs-theme="dark" interval={1000 * 2}>
                 {files.length > 0 ?
                     files.map(({ name = '', path = '' }) =>
                         <Carousel.Item key={path} >
