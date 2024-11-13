@@ -1,4 +1,5 @@
 header.banner {
+    position: relative;
     height: 40vh;
     width: 100%;
     background-repeat: no-repeat;
@@ -6,9 +7,8 @@ header.banner {
 
     .bannerLogo {
         position: absolute;
-        left: 5vw;
-        top: 15vh;
-        height: 200px;
-        width: 200px;
+        left: 10vw;
+        top: 10vh;
+        max-height: 20vh;
     }
 }

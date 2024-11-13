@@ -8,7 +8,7 @@ import './Banner.style.scss'
 export default function Banner() {
     return (
 
-        <header className='bg-body-tertiary banner' style={{ backgroundImage: `url(${banner})` }}>
+        <header className='bg-body-tertiary banner' style={{ backgroundImage: `url(${banner})`, position: 'relative' }}>
             <Image
                 roundedCircle
                 className='bannerLogo'
