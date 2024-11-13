@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom";
 import { Carousel, Col, Container, Image, Row } from "react-bootstrap";
 import { APIProvider, useMapsLibrary } from "@vis.gl/react-google-maps";
 
-// import failedToLoadImageAlt from '@assets/failedToLoadImageAlt.png'
 import { useProperties } from "@hooks";
+import { LogoImage } from "@components/logo_image/LogoImage.component";
 
 export default function Property() {
     const { allProperties } = useProperties()
@@ -32,15 +32,19 @@ export default function Property() {
     return (
         <>
             <Carousel data-bs-theme="dark">
-                {files.map(({ name = '', path = '' }) =>
-                    <Carousel.Item key={path} >
-                        <Image
-                            className="mh-img object-fit-contain"
-                            src={`${import.meta.env.VITE_BASE_URL}/files/property/${id}/${path}`}
-                            alt={name}
-                        />
+                {files.length > 0 ?
+                    files.map(({ name = '', path = '' }) =>
+                        <Carousel.Item key={path} >
+                            <Image
+                                className="mh-img object-fit-contain"
+                                src={`${import.meta.env.VITE_BASE_URL}/files/property/${id}/${path}`}
+                                alt={name}
+                            />
+                        </Carousel.Item>
+                    )
+                    : <Carousel.Item>
+                        <LogoImage />
                     </Carousel.Item>
-                )
                 }
             </Carousel>
             <Container className="propertyDetails">

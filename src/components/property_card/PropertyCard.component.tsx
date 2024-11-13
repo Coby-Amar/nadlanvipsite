@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Card } from 'react-bootstrap'
 
-import failedToLoadImageAlt from '@assets/failedToLoadImageAlt.png'
+import { LogoImage } from '@components/logo_image/LogoImage.component'
 import { MathUtils } from '@utils/math.utils'
 
 import './PropertyCard.style.scss'
@@ -26,14 +26,9 @@ export default function PropertyCard({ id, address, description, files, price, s
     const fileSrc = defaultFile ? `${import.meta.env.VITE_BASE_URL}/files/property/${id}/${defaultFile.path}` : ''
     return (
         <Card onClick={hadleClick} className='hover-shadow'>
-            {showSvg && <Card.Img
-                src={failedToLoadImageAlt}
-            />}
+            {showSvg && <LogoImage />}
             <Card.Img
                 variant="top"
-                style={{
-                    display: showSvg ? 'none' : 'block',
-                }}
                 src={fileSrc}
                 alt={defaultFile?.name ?? ''}
                 onLoad={() => {
