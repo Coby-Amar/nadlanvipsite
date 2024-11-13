@@ -5,6 +5,7 @@ import { APIProvider, useMapsLibrary } from "@vis.gl/react-google-maps";
 
 import { useProperties } from "@hooks";
 import { LogoImage } from "@components/logo_image/LogoImage.component";
+import { MathUtils } from "@utils/math.utils";
 
 export default function Property() {
     const { allProperties } = useProperties()
@@ -55,7 +56,7 @@ export default function Property() {
                                 <dd className="fw-semibold pstreet fs-3">{address.street}</dd>
                                 <dd>{sub_types.join()} {address.city}</dd>
                                 <dd>{size} מ"ר</dd>
-                                <dd>{price} <span className="pps">(ש"ח לפי מ"ר {price_per_size})</span></dd>
+                                <dd>{MathUtils.convertNumberToCurrency(price)} <span className="pps">({MathUtils.convertNumberToCurrency(price_per_size)} ש"ח לפי מ"ר )</span></dd>
                                 {(number_of_floors ?? false) && (floor ?? false) ? <dd>{number_of_floors}/{floor} קומה</dd> : null}
                             </dl>
                             <hr></hr>

@@ -1,15 +1,19 @@
 export class MathUtils {
-    static convertNumberToCurrency(value: number):string {
+    static convertNumberToCurrency(value: number): string {
+        if (value.toString().includes('.')) {
+            const [int, remainder] = value.toString().split('.')
+            return `${this.convertNumberToCurrency(parseInt(int))}.${remainder}`
+        }
         if (value < 1000) {
             return value.toString()
         }
         const valueArray = value.toString().split('')
         let timeDivided = 0
-        while(value > 999) {
+        while (value > 999) {
             value /= 1000
             timeDivided++
         }
-        const length = valueArray.length 
+        const length = valueArray.length
         for (let index = 1; timeDivided > 0; timeDivided--, index++) {
             const position = length - (index * 3)
             valueArray.splice(position, 0, ',')
