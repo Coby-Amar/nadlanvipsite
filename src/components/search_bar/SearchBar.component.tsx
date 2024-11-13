@@ -65,7 +65,7 @@ export default function SearchBar() {
                 </Col>
                 <Col md='3' className='bg-body rounded p-3'>
                     <Form.Group>
-                        <Form.Label>גודל דירה במט"ר</Form.Label>
+                        <Form.Label>גודל דירה במ"ר</Form.Label>
                         <InputGroup>
                             <Form.Control
                                 value={minSize}

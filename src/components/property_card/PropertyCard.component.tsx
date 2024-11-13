@@ -45,7 +45,7 @@ export default function PropertyCard({ id, address, description, files, price, s
 
                 </Card.Title>
                 <Card.Text className="text-center">
-                    גודל: {size} מט"ר
+                    גודל: {size} מ"ר
                 </Card.Text>
                 <Card.Text className="text-center">
                     מחיר: {MathUtils.convertNumberToCurrency(price)} ש"ח
